@@ -47,6 +47,12 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   try {
     const existingUser = users.find((user) => user._id === _id)
 
+    // Debug
+    console.log({
+      users,
+      _id
+    })
+
     if (!existingUser) {
       throw new Error('User not found')
     }
