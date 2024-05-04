@@ -42,16 +42,11 @@ app.get('/api/users', (req, res) => {
 })
 
 app.post('/api/users/:_id/exercises', (req, res) => {
-  const { ':_id': _id, description, duration, date } = req.body
+  const { description, duration, date } = req.body
+  const { _id } = req.params
 
   try {
     const existingUser = users.find((user) => user._id === _id)
-
-    // Debug
-    console.log({
-      users,
-      _id
-    })
 
     if (!existingUser) {
       throw new Error('User not found')
